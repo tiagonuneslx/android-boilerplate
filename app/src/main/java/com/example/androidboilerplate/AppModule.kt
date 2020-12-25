@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.androidboilerplate.database.AppDatabase
 import com.example.androidboilerplate.database.dao.SampleDao
-import com.example.androidboilerplate.network.SampleApi
-import com.example.androidboilerplate.network.SampleDataSource
+import com.example.androidboilerplate.network.api.SampleApi
+import com.example.androidboilerplate.network.datasource.SampleDataSource
 import com.example.androidboilerplate.repositories.SampleRepository
 import dagger.Module
 import dagger.Provides

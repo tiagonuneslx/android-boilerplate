@@ -1,4 +1,4 @@
-package com.example.androidboilerplate.network
+package com.example.androidboilerplate.network.api
 
 import com.example.androidboilerplate.database.entities.Sample
 import retrofit2.http.GET

@@ -1,5 +1,6 @@
-package com.example.androidboilerplate.network
+package com.example.androidboilerplate.network.datasource
 
+import com.example.androidboilerplate.network.api.SampleApi
 import kotlinx.coroutines.flow.flow
 
 class SampleDataSource(

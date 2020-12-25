@@ -2,7 +2,7 @@ package com.example.androidboilerplate.repositories
 
 import com.example.androidboilerplate.database.dao.SampleDao
 import com.example.androidboilerplate.database.entities.Sample
-import com.example.androidboilerplate.network.SampleDataSource
+import com.example.androidboilerplate.network.datasource.SampleDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.emitAll
