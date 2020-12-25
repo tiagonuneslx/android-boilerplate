@@ -1,5 +1,9 @@
 package com.example.androidboilerplate
 
+import android.content.Context
+import androidx.room.Room
+import com.example.androidboilerplate.database.AppDatabase
+import com.example.androidboilerplate.database.dao.SampleDao
 import com.example.androidboilerplate.network.SampleApi
 import com.example.androidboilerplate.network.SampleDataSource
 import com.example.androidboilerplate.repositories.SampleRepository
@@ -7,6 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -18,7 +23,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideSampleApi() = Retrofit.Builder()
+    fun provideSampleApi(): SampleApi = Retrofit.Builder()
         .baseUrl("https://jsonplaceholder.typicode.com/photos")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
@@ -31,6 +36,18 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideSampleRepository(sampleDataSource: SampleDataSource) =
-        SampleRepository(sampleDataSource)
+    fun provideAppDatabase(@ApplicationContext applicationContext: Context): AppDatabase =
+        Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "database"
+        ).build()
+
+    @Singleton
+    @Provides
+    fun provideSampleDao(appDatabase: AppDatabase) = appDatabase.sampleDao
+
+    @Singleton
+    @Provides
+    fun provideSampleRepository(sampleDataSource: SampleDataSource, sampleDao: SampleDao) =
+        SampleRepository(sampleDataSource, sampleDao)
 }
