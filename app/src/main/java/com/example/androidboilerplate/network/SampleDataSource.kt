@@ -9,7 +9,7 @@ class SampleDataSource(
 ) {
     val latestSamples = flow {
         while (true) {
-            val latestSamples = sampleApi.getAllSamples().samples
+            val latestSamples = sampleApi.getAllSamples()
             emit(latestSamples)
             delay(refreshIntervalMs)
         }

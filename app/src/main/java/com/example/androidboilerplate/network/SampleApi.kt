@@ -1,9 +1,9 @@
 package com.example.androidboilerplate.network
 
-import com.example.androidboilerplate.network.responses.GetAllSamplesResponse
+import com.example.androidboilerplate.database.entities.Sample
 import retrofit2.http.GET
 
 interface SampleApi {
-    @GET
-    suspend fun getAllSamples(): GetAllSamplesResponse
+    @GET("photos")
+    suspend fun getAllSamples(): List<Sample>
 }

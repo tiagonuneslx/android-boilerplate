@@ -24,7 +24,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideSampleApi(): SampleApi = Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/photos")
+        .baseUrl("https://jsonplaceholder.typicode.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(SampleApi::class.java)

@@ -81,6 +81,13 @@ dependencies {
     kapt("androidx.room:room-compiler:2.2.6")
     implementation("androidx.room:room-ktx:2.2.6")
 
+    // ConstraintLayout
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.10.0")
+    kapt("com.github.bumptech.glide:compiler:4.10.0")
+
     // Testing
     testImplementation("junit:junit:4.13.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 @Dao
-interface SampleDao : BaseDao<Sample> {
+abstract class SampleDao : BaseDao<Sample>() {
     @Query("SELECT * FROM samples")
-    fun getAll(): Flow<List<Sample>>
+    abstract fun getAll(): Flow<List<Sample>>
 }

@@ -3,10 +3,12 @@ package com.example.androidboilerplate.repositories
 import com.example.androidboilerplate.database.dao.SampleDao
 import com.example.androidboilerplate.database.entities.Sample
 import com.example.androidboilerplate.network.SampleDataSource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.withContext
 import kotlin.text.Typography.ellipsis
 
 class SampleRepository(
@@ -14,7 +16,7 @@ class SampleRepository(
     private val sampleDao: SampleDao,
 ) {
 
-    private fun saveInCache(samples: List<Sample>) {
+    private suspend fun saveInCache(samples: List<Sample>) = withContext(Dispatchers.IO) {
         sampleDao.upsert(samples)
     }
 
@@ -28,5 +30,8 @@ class SampleRepository(
                 }
             }
             .onEach { latestSamples -> saveInCache(latestSamples) }
-            .catch { emitAll(sampleDao.getAll()) }
+            .catch { exception ->
+                exception.printStackTrace()
+                emitAll(sampleDao.getAll())
+            }
 }
