@@ -1,0 +1,3 @@
+package com.example.androidboilerplate.repositories
+
+class SampleRepository
