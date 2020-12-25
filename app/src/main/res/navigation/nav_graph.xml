@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/sampleFragment"
-        android:name="com.example.androidboilerplate.ui.SampleFragment"
+        android:name="com.example.androidboilerplate.ui.sample.SampleFragment"
         android:label="SampleFragment"
         tools:layout="@layout/sample_fragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.androidboilerplate.ui
+package com.example.androidboilerplate.ui.sample
 
 import androidx.lifecycle.ViewModel
 
