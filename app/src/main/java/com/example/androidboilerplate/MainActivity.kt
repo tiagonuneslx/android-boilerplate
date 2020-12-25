@@ -1,8 +1,8 @@
-package com.example.androidboilerplate.ui
+package com.example.androidboilerplate
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidboilerplate.R
+import com.example.androidboilerplate.databinding.MainActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        MainActivityBinding.inflate(layoutInflater)
     }
 }
