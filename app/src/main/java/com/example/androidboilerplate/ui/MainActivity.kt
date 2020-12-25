@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.androidboilerplate.R
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
