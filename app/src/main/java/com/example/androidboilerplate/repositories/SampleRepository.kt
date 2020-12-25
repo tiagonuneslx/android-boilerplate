@@ -20,7 +20,9 @@ class SampleRepository(
         sampleDao.upsert(samples)
     }
 
-    fun getLatestSamplesAbbrTitle(nChars: Int) =
+    val cachedSamplesWithAbbrTitle = sampleDao.getAll()
+
+    fun getLatestSamplesWithAbbrTitle(nChars: Int) =
         sampleDataSource.latestSamples
             .map mapFlow@{ latestSamples ->
                 latestSamples.map mapSamples@{ sample ->

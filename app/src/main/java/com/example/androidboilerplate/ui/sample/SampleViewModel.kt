@@ -5,6 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.androidboilerplate.database.entities.Sample
 import com.example.androidboilerplate.repositories.SampleRepository
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.onStart
 
 class SampleViewModel @ViewModelInject constructor(
@@ -13,7 +14,7 @@ class SampleViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     val latestSamplesWithAbbrTitle: LiveData<List<Sample>> =
-        sampleRepository.getLatestSamplesAbbrTitle(20)
-            .onStart { emit(listOf(Sample(12903, "YO", ""))) }
+        sampleRepository.getLatestSamplesWithAbbrTitle(20)
+            .onStart { emitAll(sampleRepository.cachedSamplesWithAbbrTitle) }
             .asLiveData(viewModelScope.coroutineContext)
 }
