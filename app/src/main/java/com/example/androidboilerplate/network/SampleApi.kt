@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface SampleApi {
     @GET
-    fun getAllSamples(): Sample
+    suspend fun getAllSamples(): Sample
 }
